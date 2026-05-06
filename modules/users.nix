@@ -18,6 +18,11 @@
       "wheel"           # 允许使用 sudo 权限
       "networkmanager"  # 允许管理网络连接
     ];
-    shell = pkgs.fish;                # 默认 Shell：Fish
+    ignoreShellProgramCheck = true;   # 忽略 Shell 程序检查（由 Home Manager 管理）
   };
+
+  # ============================================
+  # Fish Shell 配置（系统级别）
+  # ============================================
+  programs.fish.enable = true;  # 启用 Fish Shell（基础配置）
 }
