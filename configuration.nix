@@ -11,7 +11,12 @@
   # 按功能分类组织的子配置文件
   # ============================================
   imports = [
-    ./hardware-configuration.nix  # 硬件配置（系统自动生成）
+    # 硬件配置 - 首次安装时自动生成，每台机器不同
+    # 如果文件存在则导入，否则跳过
+    (if builtins.pathExists ./hardware-configuration.nix
+     then ./hardware-configuration.nix
+     else {})
+
     ./modules/boot.nix            # 启动配置（bootloader、内核）
     ./modules/networking.nix      # 网络配置（hostname、网络管理）
     ./modules/localization.nix    # 本地化配置（时区、语言）
