@@ -29,7 +29,7 @@
   # ============================================
   # 输出配置（outputs）
   # ============================================
-  outputs = { self, nixpkgs, home-manager, ... }: {
+  outputs = { self, nixpkgs, home-manager, inputs, ... }: {
     # NixOS 系统配置
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";           # 目标系统架构
