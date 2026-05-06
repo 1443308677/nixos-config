@@ -8,7 +8,7 @@
   description = "Kinos NixOS Configuration Flake";
 
   # Nix 配置选项（全局）
-  nixConfig = { 
+  nixConfig = {
     allowUnfree = true;  # 允许使用非自由软件包
   };
 
@@ -29,11 +29,10 @@
   # ============================================
   # 输出配置（outputs）
   # ============================================
-  outputs = { self, nixpkgs, home-manager, inputs, ... }: {
+  outputs = { self, nixpkgs, home-manager, ... }: {
     # NixOS 系统配置
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";           # 目标系统架构
-      specialArgs = { inherit inputs; };  # 传递输入参数给模块
 
       # 导入配置模块
       modules = [
