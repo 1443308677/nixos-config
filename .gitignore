@@ -1,0 +1,18 @@
+# Nix build artifacts
+result/
+result-*
+
+# Hardware configuration (自动生成，每台机器不同)
+hardware-configuration.nix
+
+# Editor directories
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temporary files
+*.swp
+*.swo
+*~
