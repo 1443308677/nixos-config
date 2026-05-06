@@ -31,13 +31,19 @@
 ```bash
 cd /etc/nixos
 
-# 保留硬件配置，删除其他文件
+# 1. 备份硬件配置到临时目录
 mv hardware-configuration.nix /tmp/
+
+# 2. 清空当前目录
 rm -rf *
+
+# 3. 克隆你的配置
 git clone https://github.com/1443308677/nixos-config.git .
+
+# 4. 恢复硬件配置
 mv /tmp/hardware-configuration.nix .
 
-# 构建并重启
+# 5. 应用配置并重启
 sudo nixos-rebuild switch --flake .#nixos
 sudo reboot
 ```
@@ -46,9 +52,17 @@ sudo reboot
 
 ```bash
 cd /etc/nixos
+
+# 1. 获取远程最新代码
 sudo git fetch origin main
+
+# 2. 强制覆盖本地文件
 sudo git checkout origin/main -- .
+
+# 3. 删除锁文件（避免版本冲突）
 sudo rm -f flake.lock
+
+# 4. 应用配置
 sudo nixos-rebuild switch --flake .#nixos
 ```
 
@@ -56,8 +70,14 @@ sudo nixos-rebuild switch --flake .#nixos
 
 ```bash
 cd /etc/nixos
+
+# 1. 强制恢复到远程版本
 sudo git reset --hard origin/main
+
+# 2. 删除锁文件
 sudo rm -f flake.lock
+
+# 3. 重新构建
 sudo nixos-rebuild switch --flake .#nixos
 ```
 
